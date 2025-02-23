@@ -12,3 +12,7 @@
 ## Using the Chatbot
 - The chatbot collects user goals, assigns weightage (ensuring a total of 100%), and stores the data in PostgreSQL.
 
+## Bonus: Generic Agent
+- The chatbot can use a flexible agent to adjust its behavior based on a schema, allowing it to interact dynamically with users.
+-The chatbot allows users to define tasks with customizable fields. You can specify the type of data for each field (e.g., string, integer, or date) and then enter the data.
+The chatbot will validate the inputs based on the field types and store the task data in the PostgreSQL database.
