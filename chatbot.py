@@ -13,10 +13,14 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 client = openai.Client()
 
-# Database connection
-username = input("Enter your PostgreSQL username: ")
-password = getpass.getpass("Enter your PostgreSQL password: ")  # Hides input for security
-DATABASE_URL = f"postgresql://postgres:Pre@localhost:5432/postgres"
+# Retrieve credentials securely
+username = os.getenv("PG_USER")
+password = os.getenv("PG_PASSWORD")
+host = os.getenv("PG_HOST", "localhost")
+port = os.getenv("PG_PORT", "5432")
+database = os.getenv("PG_DATABASE", "postgres")
+
+DATABASE_URL = f"postgresql://{username}:{password}@{host}:{port}/{database}"
 
 engine = create_engine(DATABASE_URL)
 metadata = MetaData()
